@@ -12,7 +12,7 @@ const AddTodo = ({ fetchTodos, setError, error }) => {
 
   const addTodo = () => {
     if (validateTitle(title)) {
-      axios.post('https://kq2fn6fnmp.ap-southeast-1.awsapprunner.com:3001/todos', { title, priority }, {
+      axios.post('https://kq2fn6fnmp.ap-southeast-1.awsapprunner.com/todos', { title, priority }, {
         headers: { 'Content-Type': 'application/json' }
       })
       .then(response => {
