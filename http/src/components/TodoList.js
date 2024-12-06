@@ -10,7 +10,7 @@ const TodoList = () => {
   const priorityOrder = { 'Critical': 0, 'High': 1, 'Medium': 2, 'Low': 3 };
 
   const fetchTodos = () => {
-    axios.get('https://kq2fn6fnmp.ap-southeast-1.awsapprunner.com:3001/todos')
+    axios.get('https://kq2fn6fnmp.ap-southeast-1.awsapprunner.com/todos')
       .then(response => {
         const sortedTodos = response.data.sort((a, b) => {
           if (a.completed !== b.completed) {
@@ -38,7 +38,7 @@ const TodoList = () => {
 
   const toggleComplete = (id) => {
     const todo = todos.find(todo => todo.id === id);
-    axios.patch(`https://kq2fn6fnmp.ap-southeast-1.awsapprunner.com:3001/todos/${id}`, { completed: !todo.completed })
+    axios.patch(`https://kq2fn6fnmp.ap-southeast-1.awsapprunner.com/todos/${id}`, { completed: !todo.completed })
       .then(response => {
         fetchTodos(); // Trigger refresh
       })
@@ -46,7 +46,7 @@ const TodoList = () => {
   };
 
   const updateTodo = (id, title, priority) => {
-    axios.put(`https://kq2fn6fnmp.ap-southeast-1.awsapprunner.com:3001/todos/${id}`, { title, priority })
+    axios.put(`https://kq2fn6fnmp.ap-southeast-1.awsapprunner.com/todos/${id}`, { title, priority })
       .then(response => {
         fetchTodos(); // Trigger refresh
       })
@@ -54,7 +54,7 @@ const TodoList = () => {
   };
 
   const deleteTodo = (id) => {
-    axios.delete(`https://kq2fn6fnmp.ap-southeast-1.awsapprunner.com:3001/todos/${id}`)
+    axios.delete(`https://kq2fn6fnmp.ap-southeast-1.awsapprunner.com/todos/${id}`)
       .then(response => {
         fetchTodos(); // Trigger refresh
       })
